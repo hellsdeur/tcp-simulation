@@ -1,6 +1,9 @@
-import numpy as np
-import pandas as pd
 from src.data import Data
+from src.checksum import Checksum
+from src.segment import Segment
 
-d = Data(n_bits=8)
-print(d)
+d = Data(n_bits=64)
+c = Checksum(d)
+
+s = Segment(data=d, checksum=c)
+print(s.detail()[["CHECKSUM", "DATA"]])

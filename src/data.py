@@ -4,27 +4,37 @@ from random import choice
 class Data:
 
     # construtor
-    def __init__(self, bits=[], n_bits=0):
-        if n_bits == 0:
+    def __init__(self, bits=[], n_bits=None):
+
+        if n_bits is None:
             try:
                 if self.verify_input(bits):
                     self.bits = bits
                 else:
                     self.bits = []
             except TypeError:
-                print("TypeError: input must be a list of booleans.")
+                print("TypeError: input must be a list.")
             except ValueError:
                 print("ValueError: bit must be either True or False.")
         else:
-            self.bits = [choice([True, False]) for _ in range(n_bits)]
+            try:
+                if n_bits > 0:
+                    self.bits = [choice([True, False]) for _ in range(n_bits)]
+                else:
+                    self.bits = []
+                    raise ValueError("Number of bits is less than zero.")
+            except ValueError:
+                print("Value Error: number of bits must be greater than zero.")
+
 
     # vefica se a entrada é valida
-    def verify_input(self, bits):
+    @staticmethod
+    def verify_input(bits):
         if type(bits) is not list:
             raise TypeError("Input is not a list")
         for bit in bits:
             if (bit is not True) and (bit is not False):
-                raise ValueError("Bit must be a boolean.")
+                raise ValueError("Bit is not a boolean.")
         return True
 
     def __str__(self):
