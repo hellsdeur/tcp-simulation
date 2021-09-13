@@ -3,7 +3,6 @@ from random import choice
 # classe de representação dos dados
 class Data:
 
-    # construtor
     def __init__(self, bits=[], n_bits=None):
 
         if n_bits is None:

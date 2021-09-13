@@ -1,6 +1,6 @@
 from src.data import Data
 from src.checksum import Checksum
-from src.segment import Segment
+from src.tcp.segment import Segment
 
 d = Data(n_bits=64)
 c = Checksum(d)
