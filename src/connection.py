@@ -1,6 +1,7 @@
 from abc import abstractmethod
 
-class Connection:
+
+class Connection(object):
 
     def __init__(self, terminal1, terminal2):
         self.terminal1 = terminal1
